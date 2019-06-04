@@ -5,10 +5,9 @@
              x:Class="ImageCloud13.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Button x:Name="SelectImageButton" Text="Select a picture"
+                Clicked="SelectImageButton_Clicked"/>
+        <Image x:Name="selectedImage"/>
     </StackLayout>
 
 </ContentPage>
