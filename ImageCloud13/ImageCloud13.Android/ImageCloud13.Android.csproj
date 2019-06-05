@@ -95,7 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImageCloud13\ImageCloud13.csproj">
-      <Project>{79B5522B-10FF-4573-883A-4F2923BD5DB7}</Project>
+      <Project>{F3A43C8F-3C38-4D1C-B6AB-E7CFA80D8439}</Project>
       <Name>ImageCloud13</Name>
     </ProjectReference>
   </ItemGroup>
