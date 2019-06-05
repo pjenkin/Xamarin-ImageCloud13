@@ -33,17 +33,25 @@ namespace ImageCloud13
                 PhotoSize = PhotoSize.Medium       // medium is 50%, small is 25%; width/height, full & custom available
             };      // initialize variable property(ies)
 
-            var selectedImageFile = await CrossMedia.Current.PickPhotoAsync(mediaOptions);      // options also pick|take photo|video
-            // get the file (in this case, pick image)
-
-            if (selectedImageFile == null)          // standard check if something is really existent (maybe some glitch or deletion)
+            try
             {
-                await DisplayAlert("Error", "There was an error when trying to get the image", "Ok");
-                return;                             // and give up
+                var selectedImageFile = await CrossMedia.Current.PickPhotoAsync(mediaOptions);      // options also pick|take photo|video
+
+                if (selectedImageFile == null)          // standard check if something is really existent (maybe some glitch or deletion)
+                {
+                    await DisplayAlert("Error", "There was an error when trying to get the image", "Ok");
+                    return;                             // and give up
+                }
+
+                selectedImage.Source = ImageSource.FromStream(() => selectedImageFile.GetStream());
+                // TODO: why lambda syntax here? - perhaps as could be more complex than just the 1 statement here (in curly braces)
+                // get the file (in this case, pick image)
+            }
+            catch (Exception exc)
+            {
+                await DisplayAlert("Error", exc.Message, "OK");
             }
 
-            selectedImage.Source = ImageSource.FromStream(() => selectedImageFile.GetStream());
-            // TODO: why lambda syntax here? - perhaps as could be more complex than just the 1 statement here (in curly braces)
         }
     }
 }

@@ -27,8 +27,8 @@ namespace ImageCloud13.Droid
         // as per https://forums.xamarin.com/discussion/comment/343777/#Comment_343777 and https://www.udemy.com/complete-xamarin-developer-course-ios-and-android/learn/lecture/9330950#questions/7073406
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
     }    
